@@ -25,7 +25,7 @@ public class coraViruseController {
 	
 	//http://localhost:8080/Masila/Detailes
 	@GetMapping("/Detailes")
-    public Map<String, Object> getCovidWorld() {
+    public Map<String, Object> getCovidWorld(Model m) {
 		System.out.println("World Detailes : "+service.getCovidDetailes());
 		System.out.println("******************************");
         return service.getCovidDetailes();
