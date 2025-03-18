@@ -3,17 +3,19 @@ package com.Controller;
 import java.util.Map;
 
 import org.springframework.stereotype.Component;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.Service.CovidDataServices;
 
 @RestController
 @RequestMapping("/Masila")
 @Component
-public class coraViruseController {
+public class coraViruseController{
 	
 	//this for Word Result
 	private final CovidDataServices service;
@@ -25,10 +27,11 @@ public class coraViruseController {
 	
 	//http://localhost:8080/Masila/Detailes
 	@GetMapping("/Detailes")
-    public Map<String, Object> getCovidWorld(Model m) {
+    public RedirectView getCovidWorld(Model m) {
 		System.out.println("World Detailes : "+service.getCovidDetailes());
 		System.out.println("******************************");
-        return service.getCovidDetailes();
+
+        return new RedirectView("/indexHome.html");
     }
 	
 	//http://localhost:8080/Masila/country/India
