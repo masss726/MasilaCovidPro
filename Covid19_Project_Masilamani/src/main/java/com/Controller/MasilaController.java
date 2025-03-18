@@ -14,7 +14,7 @@ public class MasilaController {
     @GetMapping("/world")
     public String getWorldData() {
         Map<String,Object> worldDatas=covidDatas.getCovidWorld();
-        return "indexHome.html";
+        return "indexHome";
     }
 
 }
