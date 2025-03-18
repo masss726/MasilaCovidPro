@@ -1,6 +1,9 @@
 package com.Controller;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class MasilaController {
 	//Covid data provided class
@@ -8,8 +11,10 @@ public class MasilaController {
     coraViruseController covidDatas;
 
     //This method is used to get the world data
-    public void getWorldData() {
-        covidDatas.getCovidWorld();
+    @GetMapping("/world")
+    public String getWorldData() {
+        Map<String,Object> worldDatas=covidDatas.getCovidWorld();
+        return "indexHome.html";
     }
-    
+
 }
