@@ -3,32 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My First HTML Page</title>
+    <title>COVID-19 World Tracker</title>
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: white;
             text-align: center;
-            margin: 50px;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            background-color: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 600px;
+            margin: auto;
+            box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.1);
         }
         h1 {
-            color: blue;
+            color: #f5c518;
+        }
+        .card {
+            background-color: #333;
+            padding: 20px;
+            margin: 10px 0;
+            border-radius: 8px;
+        }
+        .card h3 {
+            margin: 0;
+            color: #ffcc00;
+        }
+        .card p {
+            font-size: 24px;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
 
-    <h1>Welcome to My Website</h1>
-    <p>This is a simple HTML page with basic elements.</p>
+    <div class="container">
+        <h1>🌍 COVID-19 Global Tracker</h1>
+        <p>Last updated: <b>March 17, 2025</b></p>
 
-    <a href="https://www.example.com">Click here to visit Example</a>
-
-    <ul>
-        <li>Item 1</li>
-        <li>Item 2</li>
-        <li>Item 3</li>
-    </ul>
-
-    <button onclick="alert('Hello, World!')">Click Me</button>
+        <div class="card">
+            <h3>Total Cases</h3>
+            <p>500,000,000</p> <!-- Manually update this number -->
+        </div>
+        
+        <div class="card">
+            <h3>Recovered</h3>
+            <p>450,000,000</p> <!-- Manually update this number -->
+        </div>
+        
+        <div class="card">
+            <h3>Deaths</h3>
+            <p>10,000,000</p> <!-- Manually update this number -->
+        </div>
+    </div>
 
 </body>
 </html>
