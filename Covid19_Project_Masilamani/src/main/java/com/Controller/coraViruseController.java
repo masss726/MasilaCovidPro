@@ -25,6 +25,7 @@ public class coraViruseController{
 		this.service = service;
 	}
 	
+	
 	//http://localhost:8080/Masila/Detailes
 	@GetMapping("/Detailes")
     public RedirectView getCovidWorld(Model m) {
