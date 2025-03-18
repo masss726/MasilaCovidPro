@@ -9,7 +9,7 @@ public class MasilaController {
 	//Covid data provided class
     @Autowired
     coraViruseController covidDatas;
-
+    //asddasdadasasdffdgfd
     //This method is used to get the world data
     @GetMapping("/world")
     public String getWorldData(Model m) {
