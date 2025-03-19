@@ -1,8 +1,9 @@
 package com.Controller;
 import java.util.Map;
-import org.springframework.ui.Model;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class MasilaController {
@@ -10,6 +11,7 @@ public class MasilaController {
     @Autowired
     coraViruseController covidDatas;
     //asddasdadasasdffdgfd
+    //cheacking 
     //This method is used to get the world data
     @GetMapping("/world")
     public String getWorldData(Model m) {
