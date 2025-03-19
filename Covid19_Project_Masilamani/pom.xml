@@ -8,6 +8,7 @@
 		<version>3.4.3</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
+	<packaging>jar</packaging><!-- main point int this project -->
 	<groupId>com.example</groupId>
 	<artifactId>Covid19_Project_Masilamani</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
