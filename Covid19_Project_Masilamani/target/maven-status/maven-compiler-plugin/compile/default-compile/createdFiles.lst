@@ -1,4 +1,4 @@
-com\Controller\coraViruseController.class
 com\Service\CovidDataServices.class
 com\Controller\MasilaController.class
 com\example\Covid19ProjectMasilamaniApplication.class
+com\Controller\coraViruseController.class
