@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>COVID-19 Country Data</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #ff9966, #ff5e62);
+            text-align: center;
+            padding: 20px;
+        }
+
+        h2 {
+            color: #fff;
+            font-size: 28px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Form Styling */
+        .form-container {
+            margin-bottom: 20px;
+        }
+
+        input, select {
+            padding: 10px;
+            font-size: 18px;
+            border: 2px solid #fff;
+            border-radius: 5px;
+            width: 250px;
+            margin: 10px;
+        }
+
+        .btn {
+            padding: 10px 15px;
+            font-size: 18px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #0056b3;
+        }
+
+        /* Table Styling */
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            width: 80%;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        th, td {
+            padding: 15px;
+            border: 1px solid #ddd;
+            text-align: left;
+            font-size: 18px;
+        }
+
+        th {
+            background: #28a745;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: rgba(40, 167, 69, 0.1);
+            transition: 0.3s ease;
+        }
+
+        .btn-back {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 20px;
+            background: #dc3545;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 5px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .btn-back:hover {
+            background: #c82333;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>🌎 COVID-19 Country Data</h2>
+
+    <div class="form-container">
+        
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Statistic</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="entry : ${countryDetails}">
+                <td th:text="${entry.key}"></td>
+                <td th:text="${entry.value}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="/world" class="btn-back">🏠 Back to Home</a>
+
+</body>
+</html>

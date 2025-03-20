@@ -35,8 +35,8 @@ public class coraViruseController {
     }
 
     // Fetch COVID-19 data for a specific country
-    @GetMapping("/country/{country}")
-    public Map<String, Object> getCountryData(@PathVariable String country) {
+    //@GetMapping("/country/{country}")
+    public Map<String, Object> getCountryData(String country) {
         Map<String, Object> countryData = service.getCovidDetailsByCountry(country);
         
         // Debugging output
