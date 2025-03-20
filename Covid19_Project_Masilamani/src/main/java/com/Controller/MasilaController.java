@@ -8,6 +8,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+                    //It is Created by Masilamani
+// Controller class for handling COVID-19 data requests
+//http://localhost:8080/world
+//http://localhost:8080/MasilaCountry/India
 
 @Controller
 public class MasilaController {
@@ -43,7 +47,6 @@ public class MasilaController {
 
         return "indexHome"; // Thymeleaf template
     }
-
     // Country setup asdasdafsfsa
     @GetMapping("/MasilaCountry/{country}")
     public String getCountryData(@PathVariable String country, Model model) {
