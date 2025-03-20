@@ -1,69 +1,122 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Masila COVID-19 World Tracker</title>
+    <title>COVID-19 World Data</title>
     <style>
+        /* General Styling */
         body {
-            font-family: Arial, sans-serif;
-            background-color: #121212;
-            color: white;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #74ebd5, #acb6e5);
             text-align: center;
-            margin: 0;
             padding: 20px;
         }
-        .container {
-            background-color: #1e1e1e;
-            padding: 20px;
+
+        h2 {
+            color: #fff;
+            font-size: 28px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Table Styling */
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            width: 80%;
+            background: white;
             border-radius: 10px;
-            max-width: 600px;
-            margin: auto;
-            box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s ease-in-out;
         }
-        h1 {
-            color: #f5c518;
+
+        th, td {
+            padding: 15px;
+            border: 1px solid #ddd;
+            text-align: left;
+            font-size: 18px;
         }
-        .card {
-            background-color: #333;
-            padding: 20px;
-            margin: 10px 0;
-            border-radius: 8px;
+
+        th {
+            background: #007bff;
+            color: white;
+            text-transform: uppercase;
         }
-        .card h3 {
-            margin: 0;
-            color: #ffcc00;
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
         }
-        .card p {
-            font-size: 24px;
-            font-weight: bold;
+
+        tr:hover {
+            background-color: rgba(0, 123, 255, 0.1);
+            transition: 0.3s ease;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            table {
+                width: 100%;
+            }
+            th, td {
+                padding: 10px;
+                font-size: 16px;
+            }
+        }
+
+        /* Fade-in Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Button Style */
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 20px;
+            background: #28a745;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 5px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .btn:hover {
+            background: #218838;
+            transform: scale(1.05);
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>Masila</h1>
-        <h1>🌍 COVID-19 Global Tracker</h1>
+    <h2>🌍 COVID-19 World Data</h2>
 
-        <p>Last updated: <b>March 17, 2025</b></p>
-        <!--cheaking thymeleaf-->
-        <span th:text="${worldDatas}"></span>
-        <div class="card">
-            <h3>Total Cases</h3>
-            <p>500,000,000</p> <!-- Manually update this number -->
-        </div>
-        
-        <div class="card">
-            <h3>Recovered</h3>
-            <p>450,000,000</p> <!-- Manually update this number -->
-        </div>
-        
-        <div class="card">
-            <h3>Deaths</h3>
-            <p>10,000,000</p> <!-- Manually update this number -->
-        </div>
-    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Statistic</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="entry : ${covidDetails}">
+                <td th:text="${entry.key}"></td>
+                <td th:text="${entry.value}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="/" class="btn">🔄 Refresh Data</a>
 
 </body>
 </html>

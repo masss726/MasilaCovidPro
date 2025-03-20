@@ -2,30 +2,41 @@ package com.Service;
 
 import java.util.Map;
 
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.client.HttpClientErrorException;
+
 @Service
-@Component
 public class CovidDataServices {
-	//It is all Datas
-	private final String Main_url="https://disease.sh/v3/covid-19/all";
-	//It is Select By Cuntry
-	private final String API_URL = "https://disease.sh/v3/covid-19/countries/";
-	
-	//it is used to worldRecords
-	@SuppressWarnings("unchecked") 
-	public Map<String,Object> getCovidDetailes(){		
-		RestTemplate MainDatas=new RestTemplate();
-		return MainDatas.getForObject(Main_url,Map.class);
-		
-	}
-	
-//it is use to select Cuntry
-	@SuppressWarnings("unchecked")
-	public Map<String,Object> getCovidDetailesByCuntry(String contry){
-		RestTemplate MainDatas=new RestTemplate();
-		 String urlForCountry = API_URL + contry;
-	        return MainDatas.getForObject(urlForCountry, Map.class);
-	}
+
+    // Global COVID-19 data API URL
+    private static final String GLOBAL_API_URL = "https://disease.sh/v3/covid-19/all";
+
+    // Country-specific COVID-19 data API URL
+    private static final String COUNTRY_API_URL = "https://disease.sh/v3/covid-19/countries/";
+
+    private final RestTemplate restTemplate = new RestTemplate();
+
+    // Fetch global COVID-19 statistics
+    @SuppressWarnings("unchecked") 
+    public Map<String, Object> getCovidDetails() {        
+        try {
+            return restTemplate.getForObject(GLOBAL_API_URL, Map.class);
+        } catch (HttpClientErrorException e) {
+            System.err.println("Error fetching global COVID data: " + e.getMessage());
+            return Map.of("error", "Unable to fetch global COVID-19 data.");
+        }
+    }
+
+    // Fetch COVID-19 statistics for a specific country
+    @SuppressWarnings("unchecked")
+    public Map<String, Object> getCovidDetailsByCountry(String country) {
+        try {
+            String urlForCountry = COUNTRY_API_URL + country;
+            return restTemplate.getForObject(urlForCountry, Map.class);
+        } catch (HttpClientErrorException e) {
+            System.err.println("Error fetching COVID data for country: " + country + " - " + e.getMessage());
+            return Map.of("error", "Unable to fetch COVID-19 data for " + country);
+        }
+    }
 }

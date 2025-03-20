@@ -13,33 +13,36 @@ import com.Service.CovidDataServices;
 @RestController
 @RequestMapping("/Masila")
 @Component
-public class coraViruseController{
-	
-	//this for Word Result
-	private final CovidDataServices service;
-	
-	public coraViruseController(CovidDataServices service) {
-		super();
-		this.service = service;
-	}
-	
+public class coraViruseController {
 
-	//http://localhost:8080/Masila
-	@GetMapping
-    public Map<String,Object> getCovidWorld() {
-		System.out.println("World Detailes : "+service.getCovidDetailes());
-		System.out.println("******************************");
-		 
-        return service.getCovidDetailes();
+    // Inject Covid Data Service
+    private final CovidDataServices service;
+
+    public coraViruseController(CovidDataServices service) {
+        this.service = service;
     }
-	
-	//http://localhost:8080/Masila/country/India
-	@GetMapping("/country/{count}")
-	public Map<String,Object> getContryDatas(@PathVariable String count){
-		System.out.println(count+" Detailes : "+service.getCovidDetailesByCuntry(count));
-		System.out.println("*****************************");
-		return service.getCovidDetailesByCuntry(count);
-	}
-	
 
+    // Fetch global COVID-19 data
+    @GetMapping
+    public Map<String, Object> getCovidWorld() {
+        Map<String, Object> covidData = service.getCovidDetails();
+        
+        // Debugging output
+        System.out.println("Fetched World Data: " + covidData);
+        System.out.println("******************************");
+
+        return covidData;
+    }
+
+    // Fetch COVID-19 data for a specific country
+    @GetMapping("/country/{country}")
+    public Map<String, Object> getCountryData(@PathVariable String country) {
+        Map<String, Object> countryData = service.getCovidDetailsByCountry(country);
+        
+        // Debugging output
+        System.out.println(country + " COVID Data: " + countryData);
+        System.out.println("******************************");
+
+        return countryData;
+    }
 }
